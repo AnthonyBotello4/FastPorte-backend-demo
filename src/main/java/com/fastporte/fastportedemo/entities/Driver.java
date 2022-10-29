@@ -8,11 +8,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "client")
+@Table(name = "drivers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class client implements Serializable {
+public class Driver implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +27,7 @@ public class client implements Serializable {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "photo", nullable = true)
+    @Column(name = "photo")
     private String photo;
 
     @Column(name = "email", nullable = false)
@@ -38,7 +39,7 @@ public class client implements Serializable {
     @Column(name = "region", nullable = false)
     private String region;
 
-    @Column(name = "description", nullable = false, length = 100)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "password", nullable = false)
@@ -46,5 +47,9 @@ public class client implements Serializable {
 
     @Column(name = "type_of_user", nullable = false)
     private String typeOfUser;
+
+    @Column(name = "photo_auto", nullable = false)
+    private String photoAuto;
+
 
 }

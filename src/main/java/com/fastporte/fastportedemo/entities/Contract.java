@@ -1,7 +1,6 @@
 package com.fastporte.fastportedemo.entities;
 
 import java.util.Date;
-import java.util.Calendar;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -18,7 +17,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class contract implements Serializable {
+public class Contract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,10 +50,10 @@ public class contract implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private client client;
+    private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private driver driver;
+    private Driver driver;
 }
