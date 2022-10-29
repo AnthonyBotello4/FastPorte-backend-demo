@@ -1,5 +1,8 @@
 package com.fastporte.fastportedemo.entities;
 
+import java.util.Date;
+import java.util.Calendar;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +10,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
+
 
 @Entity
 @Table(name = "contract")
@@ -19,16 +24,17 @@ public class contract implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "client_id", nullable = false)
+    /*@Column(name = "client_id", nullable = false)
     private Long idClient;
 
     @Column(name = "driver_id", nullable = false)
     private Long idDriver;
+     */
 
     @Column(name = "subject", nullable = false)
     private String subject;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 100)
     private String description;
 
     @Column(name = "amount", nullable = false)
@@ -37,9 +43,10 @@ public class contract implements Serializable {
     @Column(name = "quantity", nullable = false)
     private String quantity;
 
-    @Temporal(TemporalType.DATE)
+
     @Column(name = "date", nullable = false)
-    private String date;
+    @Temporal(TemporalType.DATE)
+    private Date contractDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)

@@ -26,7 +26,7 @@ public class client implements Serializable {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "photo")
+    @Column(name = "photo", nullable = true)
     private String photo;
 
     @Column(name = "email", nullable = false)
@@ -38,7 +38,7 @@ public class client implements Serializable {
     @Column(name = "region", nullable = false)
     private String region;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 100)
     private String description;
 
     @Column(name = "password", nullable = false)
