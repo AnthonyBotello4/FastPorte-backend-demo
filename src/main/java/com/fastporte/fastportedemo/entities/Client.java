@@ -47,4 +47,11 @@ public class Client implements Serializable {
     @Column(name = "type_of_user", nullable = false)
     private String typeOfUser;
 
+    //Unir columnas para obtener sus notificaciones
+    // @OneToOne(mappedBy = "client")
+    // private Notification notification;
+
+    //Unir columnas para obtener sus contratos
+
+
 }

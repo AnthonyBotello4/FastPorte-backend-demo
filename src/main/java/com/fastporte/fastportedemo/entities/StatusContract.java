@@ -1,5 +1,6 @@
 package com.fastporte.fastportedemo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fastporte.fastportedemo.entities.enumeration.StatusContractEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +18,11 @@ public class StatusContract implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(name = "status", nullable = true)
-    private String status = StatusContractEnum.OFFER.name();
+    private String status;
 
 /*
     @OneToOne(mappedBy = "status")
