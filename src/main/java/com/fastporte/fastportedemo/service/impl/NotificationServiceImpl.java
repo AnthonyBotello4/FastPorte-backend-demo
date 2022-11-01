@@ -35,7 +35,7 @@ public class NotificationServiceImpl implements INotificationService {
     }
 
     @Override
-    public List<Notification> gettAll() {
+    public List<Notification> getAll() {
         return notificationRepository.findAll();
     }
 

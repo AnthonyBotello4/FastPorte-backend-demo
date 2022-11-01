@@ -32,7 +32,7 @@ public class ContractServiceImpl implements IContractService {
     }
 
     @Override
-    public List<Contract> gettAll() throws Exception {
+    public List<Contract> getAll() throws Exception {
         return contractRepository.findAll();
     }
 

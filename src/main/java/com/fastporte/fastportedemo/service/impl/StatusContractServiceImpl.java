@@ -30,7 +30,7 @@ public class StatusContractServiceImpl implements IStatusContractService {
     }
 
     @Override
-    public List<StatusContract> gettAll() throws Exception {
+    public List<StatusContract> getAll() throws Exception {
         return statusContractRepository.findAll();
     }
 

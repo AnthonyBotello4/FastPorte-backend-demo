@@ -30,7 +30,7 @@ public class DriverServiceImpl implements IDriverService {
     }
 
     @Override
-    public List<Driver> gettAll() throws Exception {
+    public List<Driver> getAll() throws Exception {
         return driverRepository.findAll();
     }
 

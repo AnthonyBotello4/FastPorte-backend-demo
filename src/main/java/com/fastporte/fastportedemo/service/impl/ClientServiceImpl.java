@@ -32,7 +32,7 @@ public class ClientServiceImpl implements IClientService {
     }
 
     @Override
-    public List<Client> gettAll() throws Exception {
+    public List<Client> getAll() throws Exception {
         return clientRepository.findAll();
     }
 

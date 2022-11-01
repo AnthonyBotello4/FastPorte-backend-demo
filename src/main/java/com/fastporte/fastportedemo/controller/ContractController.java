@@ -33,7 +33,7 @@ public class ContractController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findAllContracts() { //Response entity: la clase por defecto de spring para responder desde un controlador de API
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
 
             if (contracts.size() > 0)
                 return new ResponseEntity<>(contracts, HttpStatus.OK);
@@ -65,7 +65,7 @@ public class ContractController {
     @GetMapping(value = "/offer/driver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findContractByStatusOffer( @PathVariable("id") Long id) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getStatus().getStatus().equals("OFFER"));
             contracts.removeIf(contract -> !contract.getDriver().getId().equals(id));
             if (contracts.size() > 0)
@@ -82,7 +82,7 @@ public class ContractController {
     @GetMapping(value = "/offer/{user}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findContractByStatusOfferUser( @PathVariable("user") String user, @PathVariable("id") Long id) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getStatus().getStatus().equals("OFFER"));
             if(user.equals("client")){
                 contracts.removeIf(contract -> !contract.getClient().getId().equals(id));
@@ -103,7 +103,7 @@ public class ContractController {
     @GetMapping(value = "/pending/{user}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findContractByStatusPending(@PathVariable("id") Long id, @PathVariable("user") String user) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getStatus().getStatus().equals("PENDING"));
             if(user.equals("client")) {
                 contracts.removeIf(contract -> !contract.getClient().getId().equals(id));
@@ -127,7 +127,7 @@ public class ContractController {
     @GetMapping(value = "/history/{user}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findContractByStatusHistory(@PathVariable("id") Long id, @PathVariable("user") String user) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getStatus().getStatus().equals("HISTORY"));
             if(user.equals("client")) {
                 contracts.removeIf(contract -> !contract.getClient().getId().equals(id));
@@ -173,7 +173,7 @@ public class ContractController {
     @GetMapping(value = "/notifications-client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findNotificationsByClient(@PathVariable("id") Long id) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getClient().getId().equals(id));
             /*
             contracts.forEach(contract -> {
@@ -196,7 +196,7 @@ public class ContractController {
     public ResponseEntity<List<Contract>> findNotificationsUnreadByUser(@PathVariable("id") Long id,
                                                                           @PathVariable("user") String user) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             if(user.equals("client")) {
                 contracts.removeIf(contract -> !contract.getClient().getId().equals(id));
                 contracts.removeIf(contract -> contract.getNotification().getId().equals(1L));
@@ -219,7 +219,7 @@ public class ContractController {
     @GetMapping(value = "/notifications-driver/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contract>> findNotificationsByDriver(@PathVariable("id") Long id) {
         try {
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> !contract.getDriver().getId().equals(id));
             /*
             contracts.forEach(contract -> {
@@ -326,7 +326,7 @@ public class ContractController {
     public ResponseEntity<Contract> updateContractNotificationPatch() {
         try {
 
-            List<Contract> contracts = contractService.gettAll();
+            List<Contract> contracts = contractService.getAll();
             contracts.removeIf(contract -> contract.getNotification().getId() == 1L);
             Optional<Notification> notification = notificationService.getById(1L);
 

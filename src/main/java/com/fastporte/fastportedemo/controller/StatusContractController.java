@@ -24,7 +24,7 @@ public class StatusContractController {
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<StatusContract>> findAllStatus() {
         try {
-            List<StatusContract> statusContracts = statusContractService.gettAll();
+            List<StatusContract> statusContracts = statusContractService.getAll();
             if (statusContracts.size() > 0)
                 return new ResponseEntity<>(statusContracts, HttpStatus.OK);
             else
