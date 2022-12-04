@@ -155,10 +155,15 @@ public class ContractController {
         try {
             Optional<Client> client = clientService.getById(clientId);
             Optional<Driver> driver = driverService.getById(driverId);
-
+            List<Contract> contracts = contractService.getAll();
+            System.out.println(contracts.get(contracts.size()-1).getId());
             if (client.isPresent() && driver.isPresent()) {
+
                 contract.setClient(client.get());
                 contract.setDriver(driver.get());
+                contract.setStatus(statusContractService.getById(1L).get());
+                contract.setNotification(notificationService.getById(0L).get());
+                System.out.println(contract);
                 Contract contractNew = contractService.save(contract);
                 return ResponseEntity.status(HttpStatus.CREATED).body(contractNew);
             } else
@@ -347,8 +352,4 @@ public class ContractController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
-
 }
